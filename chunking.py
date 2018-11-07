@@ -7,8 +7,6 @@ import time
 
 def chunk_test(chunk_size=3, chunk_numbers=2):
     clear = "\n" * 100
-    results_good = 0
-    results_bad = 0
     chunks = []
 
     for i in range(0, chunk_numbers):
@@ -46,7 +44,7 @@ time_sum = 0
 input("start enter")
 while continue_game != "n":
     games += 1
-    r, t = chunk_test(chunk_numbers=3)
+    r, t = chunk_test(chunk_numbers=3, chunk_size=2)
     results_good += r
     time_sum += t
     minutes_b = (time.time() - initial_time) / 60
