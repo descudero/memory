@@ -7,10 +7,15 @@ import time
 
 def chunk_test(chunk_size=3, chunk_numbers=2):
     clear = "\n" * 100
+    center = "\n" * 15
     chunks = []
+    print(clear)
 
     for i in range(0, chunk_numbers):
-        chunks.append(randint(0, pow(10, chunk_size) - 1))
+        rand_value = 0
+        while rand_value < 100:
+            rand_value = randint(0, pow(10, chunk_size) - 1)
+        chunks.append(rand_value)
 
     text = ""
 
@@ -18,6 +23,7 @@ def chunk_test(chunk_size=3, chunk_numbers=2):
         text += " " + str(chunk)
 
     print(text)
+    print(center)
     start = time.time()
     input("memorize en press any key")
     print(clear)
@@ -35,6 +41,8 @@ def chunk_test(chunk_size=3, chunk_numbers=2):
     return result, time_lapse
 
 
+chunk_numbers = 3
+chunk_size = 3
 initial_time = time.time()
 results_good = 0
 results_bad = 0
@@ -44,7 +52,8 @@ time_sum = 0
 input("start enter")
 while continue_game != "n":
     games += 1
-    r, t = chunk_test(chunk_numbers=3, chunk_size=2)
+    r, t = chunk_test(chunk_numbers=chunk_numbers, chunk_size=chunk_numbers
+                      )
     results_good += r
     time_sum += t
     minutes_b = (time.time() - initial_time) / 60
@@ -55,3 +64,7 @@ while continue_game != "n":
     print("AVG TIME " + str(round(time_sum / games, 2)))
     print("minutes by " + str(minutes_b))
     continue_game = input("continue chunking practice?")
+print("final score:")
+print(str(chunk_size) + "," + str(chunk_numbers) + "," + str(games) + "," + str(results_good) + "," + str(
+    games - results_good) + "," + str(minutes_b)
+      + "," + str(round(time_sum / games, 2)) + "," + str(round(results_good / (games), 4) * 100))
